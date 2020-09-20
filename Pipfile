@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+certifi = "*"
+decorator = "*"
+kiwisolver = "*"
+matplotlib = "*"
+networkx = ">=2.5"
+numpy = "*"
+pyparsing = "*"
+python-dateutil = "*"
+six = "*"
+Cycler = "*"
+Pillow = "*"
+
+[requires]
+python_version = "3.8"

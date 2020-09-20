@@ -5,6 +5,7 @@ Yael Chavoya
 from grafo import Grafo
 from caminos import imprimir_camino
 import ejemplos
+import gui
 
 
 def _clear_screen():
@@ -20,19 +21,6 @@ def _wait_enter():
     """
     input('Presione ENTER para continuar...')
     _clear_screen()
-
-
-def _ver_grafo(grafo: Grafo):
-    """
-    Visualizar un grafo
-
-    :param grafo: El grafo a visualizar
-    """
-    if len(grafo.nodos) == 0:
-        print('El grafo está vacío')
-    else:
-        print(grafo)
-    _wait_enter()
 
 
 def _agregar_nodo(grafo: Grafo):
@@ -125,6 +113,24 @@ def _conectar_nodos(grafo: Grafo):
                 except ValueError:
                     print('Por favor ingrese un número')
 
+def _ver_matriz_ady(grafo: Grafo):
+    """
+    Visualizar un grafo
+
+    :param grafo: El grafo a visualizar
+    """
+    if len(grafo.nodos) == 0:
+        print('El grafo está vacío')
+    else:
+        print(grafo)
+    _wait_enter()
+
+
+def _mostrar_grafo(grafo: Grafo):
+    print('Mostrando en pyplot...')
+    gui.visualizar_grafo(grafo)
+    _wait_enter()
+
 
 def _buscar_camino(grafo: Grafo):
     """
@@ -171,12 +177,13 @@ def main_menu():
     while entrada != '0':
         print('====== Grafos ======\nAutor: Yael Chavoya\n')
         print('Seleccione una opción:')
-        print('1: Ver grafo')
-        print('2: Agregar nodo')
-        print('3: Eliminar nodo')
-        print('4: Conectar nodos')
-        print('5: Buscar camino')
-        print('6: Ver ejemplo')
+        print('1: Agregar nodo')
+        print('2: Eliminar nodo')
+        print('3: Conectar nodos')
+        print('4: Ver matriz de adyacencia')
+        print('5: Ver grafo')
+        print('6: Buscar camino')
+        print('7: Ver ejemplo')
         print('0: Salir')
 
         entrada = input('> ')
@@ -185,18 +192,21 @@ def main_menu():
         if entrada == '0':
             break
         elif entrada == '1':
-            _ver_grafo(grafo)
-        elif entrada == '2':
             _agregar_nodo(grafo)
-        elif entrada == '3':
+        elif entrada == '2':
             _eliminar_nodo(grafo)
-        elif entrada == '4':
+        elif entrada == '3':
             _conectar_nodos(grafo)
+        elif entrada == '4':
+            _ver_matriz_ady(grafo)
         elif entrada == '5':
-            _buscar_camino(grafo)
+            _mostrar_grafo(grafo)
         elif entrada == '6':
-            ejemplos.ciudades()
+            _buscar_camino(grafo)
+        elif entrada == '7':
+            g_ej = ejemplos.ciudades()
             _wait_enter()
+            _mostrar_grafo(g_ej)
         else:
             print('Opción no reconocida.')
             _wait_enter()

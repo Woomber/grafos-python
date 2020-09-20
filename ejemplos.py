@@ -6,7 +6,7 @@ from grafo import Grafo
 from caminos import imprimir_camino
 
 
-def letras():
+def letras() -> Grafo:
     """
     Ejemplo 1: Letras
     """
@@ -23,8 +23,10 @@ def letras():
 
     imprimir_camino(grafo, 'A', 'C')
 
+    return grafo
 
-def ciudades():
+
+def ciudades() -> Grafo:
     """
     Ejemplo 2: Ciudades
     """
@@ -48,3 +50,5 @@ def ciudades():
     grafo.connect(madrid, valencia, 98)
 
     imprimir_camino(grafo, cordoba, alicante)
+
+    return grafo
